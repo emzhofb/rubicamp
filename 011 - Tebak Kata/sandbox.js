@@ -15,22 +15,29 @@ console.log(
 );
 
 let count = 0;
-let ask = data[count].definition;
-let answer = data[count].term;
 
-console.log(`Pertanyaan: ${ask}`);
-
+console.log(`Pertanyaan: ${data[count].definition}`);
 rl.prompt();
 
 rl.on('line', line => {
-  if (line.toLowerCase() !== answer) {
-    console.log('Wkwkwk, Anda kurang beruntung!\n');
-    rl.prompt();
+  if (count !== data.length - 1) {
+    if (line.toLowerCase() !== data[count].term) {
+      console.log('Wkwkwk, Anda kurang beruntung!\n');
+      rl.prompt();
+    } else {
+      count++;
+      console.log('Selamat Anda benar!\n');
+      console.log(`Pertanyaan: ${data[count].definition}`);
+      rl.prompt();
+    }
   } else {
-    // console.log(count);
-    console.log('Selamat Anda benar!\n');
-    count++;
-    console.log(`Pertanyaan: ${ask}`);
-    rl.prompt();
+    if (line.toLowerCase() !== data[count].term) {
+      console.log('Wkwkwk, Anda kurang beruntung!\n');
+      rl.prompt();
+    } else {
+      console.log('Selamat Anda benar!\n');
+      console.log('Hore Anda Menang!');
+      process.exit(0);
+    }
   }
 });
