@@ -7,15 +7,16 @@ const data = JSON.parse(file);
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: `Tebakan: `
+  prompt: 'Tebakan: '
 });
 
 console.log(
   'Selamat datang di permainan Tebak Kata, silakan isi dengan jawaban yang benar!'
 );
 
-let ask = data[0].definition;
-let answer = data[0].term;
+let count = 0;
+let ask = data[count].definition;
+let answer = data[count].term;
 
 console.log(`Pertanyaan: ${ask}`);
 
@@ -23,13 +24,13 @@ rl.prompt();
 
 rl.on('line', line => {
   if (line.toLowerCase() !== answer) {
-    console.log('Wkwkwk, Anda kurang beruntung!\n')
+    console.log('Wkwkwk, Anda kurang beruntung!\n');
+    rl.prompt();
+  } else {
+    // console.log(count);
+    console.log('Selamat Anda benar!\n');
+    count++;
+    console.log(`Pertanyaan: ${ask}`);
     rl.prompt();
   }
-  else {
-    console.log('Selamat Anda benar!\n');
-    process.exit(0);
-  }
-
-  rl.prompt();
 });
