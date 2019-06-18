@@ -4,12 +4,10 @@ const readline = require('readline');
 const file = fs.readFileSync('./data.json');
 const data = JSON.parse(file);
 
-// console.log(data);
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: `Jawaban: `
+  prompt: `Tebakan: `
 });
 
 console.log(
@@ -17,15 +15,19 @@ console.log(
 );
 
 let ask = data[0].definition;
-console.log(`Pertanyaan: ${ask}`);
 let answer = data[0].term;
+
+console.log(`Pertanyaan: ${ask}`);
 
 rl.prompt();
 
 rl.on('line', line => {
-  if (line.toLowerCase() !== answer) rl.prompt();
+  if (line.toLowerCase() !== answer) {
+    console.log('Wkwkwk, Anda kurang beruntung!\n')
+    rl.prompt();
+  }
   else {
-    console.log('Hore anda menang!');
+    console.log('Selamat Anda benar!\n');
     process.exit(0);
   }
 
