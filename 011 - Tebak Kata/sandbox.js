@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 });
 
 console.log(
-  'Selamat datang di permainan Tebak Kata, silakan isi dengan jawaban yang benar!'
+  'Selamat datang di permainan Tebak Kata, silakan isi dengan jawaban yang benar!\n'
 );
 
 let count = 0;
@@ -20,7 +20,7 @@ console.log(`Pertanyaan: ${data[count].definition}`);
 rl.prompt();
 
 rl.on('line', line => {
-  if (count !== data.length - 1) {
+  if (count < data.length - 1) {
     if (line.toLowerCase() !== data[count].term) {
       console.log('Wkwkwk, Anda kurang beruntung!\n');
       rl.prompt();
