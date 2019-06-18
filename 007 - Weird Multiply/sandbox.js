@@ -7,7 +7,6 @@ function weirdMultiply(number) {
 
   for (var i = 0; i < stringNumber.length; i++)
     result *= Number(stringNumber[i]);
-
   return weirdMultiply(result);
 }
 
