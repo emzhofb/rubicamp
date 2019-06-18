@@ -1,4 +1,4 @@
-// 1
+// cara 1
 function sum() {
   var total = 0;
 
@@ -9,7 +9,7 @@ function sum() {
   console.log(total);
 }
 
-// 2
+// cara 2
 function sum(...args) {
   let total = 0;
 
