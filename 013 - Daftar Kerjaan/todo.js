@@ -39,7 +39,7 @@ if (process.argv.length < 3) {
   let id;
   let file;
   let readData;
-  
+
   if (fs.existsSync('data.json')) {
     file = fs.readFileSync('data.json');
     readData = JSON.parse(file);
@@ -55,18 +55,20 @@ if (process.argv.length < 3) {
     case 'add':
       // console.log('add - jalan');
       id++;
-      writeData.push({ id: id, content: input });
+      writeData.push({ id: id, content: `[ ] ${input}` });
 
       fs.writeFileSync('./data.json', JSON.stringify(writeData));
       console.log(`"${input}" telah di tambahkan`);
       break;
+
     case 'list':
       // console.log(readData);
       console.log('Daftar Pekerjaan');
       for (let i = 0; i < readData.length; i++) {
-        console.log(`${readData[i].id}. [ ] ${readData[i].content}`);
+        console.log(`${readData[i].id}. ${readData[i].content}`);
       }
       break;
+
     case 'delete':
       // console.log(typeof process.argv[3]);
       writeData = [];
@@ -75,7 +77,14 @@ if (process.argv.length < 3) {
           // console.log(readData[i]);
           writeData.push(readData[i]);
         } else {
-          console.log(`'${readData[i].content}' telah di hapus dari daftar`);
+          let deletedContent = readData[i].content;
+          let tempContent = '';
+
+          for (let i = 4; i < deletedContent.length; i++) {
+            tempContent += deletedContent[i];
+          }
+
+          console.log(`'${tempContent}' telah di hapus dari daftar`);
         }
       }
       // console.log(writeData);
@@ -90,8 +99,77 @@ if (process.argv.length < 3) {
       // console.log(writeData);
       fs.writeFileSync('./data.json', JSON.stringify(writeData));
       break;
+
+    case 'complete':
+      writeData = [];
+
+      for (let i = 0; i < readData.length; i++) {
+        if (readData[i].id != process.argv[3]) {
+          writeData.push(readData[i]);
+        } else {
+          let updatedContent = readData[i].content;
+          let tempContent = '';
+
+          for (let i = 4; i < updatedContent.length; i++) {
+            tempContent += updatedContent[i];
+          }
+
+          console.log(`'${tempContent}' telah selesai.`);
+
+          let completedContent = '';
+
+          for (let i = 0; i < updatedContent.length; i++) {
+            if (i === 1) completedContent += 'X';
+            else completedContent += updatedContent[i];
+          }
+
+          // console.log(completedContent);
+
+          readData[i].content = completedContent;
+          writeData.push(readData[i]);
+        }
+      }
+
+      // console.log(writeData);
+      fs.writeFileSync('./data.json', JSON.stringify(writeData));
+      break;
+
+    case 'uncomplete':
+      writeData = [];
+
+      for (let i = 0; i < readData.length; i++) {
+        if (readData[i].id != process.argv[3]) {
+          writeData.push(readData[i]);
+        } else {
+          let updatedContent = readData[i].content;
+          let tempContent = '';
+
+          for (let i = 4; i < updatedContent.length; i++) {
+            tempContent += updatedContent[i];
+          }
+
+          console.log(`'${tempContent}' status selesai dibatalkan.`);
+
+          let completedContent = '';
+
+          for (let i = 0; i < updatedContent.length; i++) {
+            if (i === 1) completedContent += ' ';
+            else completedContent += updatedContent[i];
+          }
+
+          // console.log(completedContent);
+
+          readData[i].content = completedContent;
+          writeData.push(readData[i]);
+        }
+      }
+
+      // console.log(writeData);
+      fs.writeFileSync('./data.json', JSON.stringify(writeData));
+      break;
+
     default:
-      console.log('Maaf, keyword salah.')
+      console.log('Maaf, keyword salah.');
       break;
   }
 }
