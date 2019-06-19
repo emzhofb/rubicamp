@@ -12,7 +12,7 @@ if (process.argv.length < 3) {
   $ node todo.js delete <task_id>
   $ node todo.js complete <task_id>
   $ node todo.js uncomplete <task_id>
-  $ node todo.js list:outstanding asc|desc
+  $ node todo.js list:outstandingList asc|desc
   $ node todo.js list:completed asc|desc
   $ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
   $ node todo.js filter:<tag_name>
@@ -166,6 +166,52 @@ if (process.argv.length < 3) {
 
       // console.log(writeData);
       fs.writeFileSync('./data.json', JSON.stringify(writeData));
+      break;
+
+    case 'list:outstanding':
+      const outstandingList = [];
+
+      for (let i = 0; i < readData.length; i++) {
+        if (readData[i].content[1] === ' ') {
+          outstandingList.push(readData[i]);
+        }
+      }
+
+      console.log('Daftar Pekerjaan');
+      if (process.argv[3] === 'asc') {
+        for (let i = 0; i < outstandingList.length; i++) {
+          console.log(`${outstandingList[i].id}. ${outstandingList[i].content}`);
+        }
+      } else if (process.argv[3] === 'desc') {
+        for (let i = outstandingList.length - 1; i >= 0; i--) {
+          console.log(`${outstandingList[i].id}. ${outstandingList[i].content}`);
+        }
+      } else {
+        console.log('Maaf, gunakan asc atau desc');
+      }
+      break;
+
+    case 'list:completed':
+      const completedList = [];
+
+      for (let i = 0; i < readData.length; i++) {
+        if (readData[i].content[1] === 'X') {
+          completedList.push(readData[i]);
+        }
+      }
+
+      console.log('Daftar Pekerjaan');
+      if (process.argv[3] === 'asc') {
+        for (let i = 0; i < completedList.length; i++) {
+          console.log(`${completedList[i].id}. ${completedList[i].content}`);
+        }
+      } else if (process.argv[3] === 'desc') {
+        for (let i = completedList.length - 1; i >= 0; i--) {
+          console.log(`${completedList[i].id}. ${completedList[i].content}`);
+        }
+      } else {
+        console.log('Maaf, gunakan asc atau desc');
+      }
       break;
 
     default:
