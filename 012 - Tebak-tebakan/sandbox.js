@@ -28,32 +28,37 @@ Gunakan 'skip' untuk menangguhkan pertanyaannya, dan di akhir pertanyaan akan di
     rl.prompt();
 
     rl.on('line', line => {
-      if (count < arrFromJson.length - 1) {
-        if (line.toLowerCase() !== arrFromJson[count].term) {
-          wrong++;
-          console.log(
-            `Wkwkwk, Anda kurang beruntung! Anda telah salah ${wrong}, silakan coba lagi. \n`
-          );
-          rl.prompt();
+      if (line.toLowerCase() !== 'skip') {
+        if (count < arrFromJson.length - 1) {
+          if (line.toLowerCase() !== arrFromJson[count].term) {
+            wrong++;
+            console.log(
+              `Wkwkwk, Anda kurang beruntung! Anda telah salah ${wrong}, silakan coba lagi. \n`
+            );
+            rl.prompt();
+          } else {
+            count++;
+            console.log('Selamat Anda benar!\n');
+            wrong = 0;
+            console.log(`Pertanyaan: ${arrFromJson[count].definition}`);
+            rl.prompt();
+          }
         } else {
-          count++;
-          console.log('Selamat Anda benar!\n');
-          wrong = 0;
-          console.log(`Pertanyaan: ${arrFromJson[count].definition}`);
-          rl.prompt();
+          if (line.toLowerCase() !== arrFromJson[count].term) {
+            wrong++;
+            console.log(
+              `Wkwkwk, Anda kurang beruntung! Anda telah salah ${wrong}, silakan coba lagi. \n`
+              );
+            rl.prompt();
+          } else {
+            console.log('Selamat Anda benar!\n');
+            console.log('Hore Anda Menang!');
+            process.exit(0);
+          }
         }
       } else {
-        if (line.toLowerCase() !== arrFromJson[count].term) {
-          wrong++;
-          console.log(
-            `Wkwkwk, Anda kurang beruntung! Anda telah salah ${wrong}, silakan coba lagi. \n`
-          );
-          rl.prompt();
-        } else {
-          console.log('Selamat Anda benar!\n');
-          console.log('Hore Anda Menang!');
-          process.exit(0);
-        }
+        console.log('skipped');
+        process.exit(0);
       }
     });
   }
