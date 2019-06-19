@@ -1,1 +1,1 @@
-[{"id":1,"content":"[X] saya mau pergi ke pasar"},{"id":2,"content":"[ ] saya mau makan"},{"id":3,"content":"[ ] saya mau tidur"}]
+[{"id":1,"content":"[X] saya mau pergi ke pasar","tags":["masak","sayur"]},{"id":2,"content":"[ ] saya mau makan","tags":[]},{"id":3,"content":"[ ] saya mau tidur","tags":[]}]

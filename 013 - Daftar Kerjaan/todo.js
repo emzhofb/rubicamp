@@ -1,22 +1,23 @@
 const process = require('process');
 const fs = require('fs');
 
-// print process.argv
+const help = `
+$ node todo.js <command>
+$ node todo.js list
+$ node todo.js task <task_id>
+$ node todo.js add <task_content>
+$ node todo.js delete <task_id>
+$ node todo.js complete <task_id>
+$ node todo.js uncomplete <task_id>
+$ node todo.js list:outstandingList asc|desc
+$ node todo.js list:completed asc|desc
+$ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
+$ node todo.js filter:<tag_name>
+`;
+
 if (process.argv.length < 3) {
   console.log('>>> JS TODO <<<');
-  console.log(`
-  $ node todo.js <command>
-  $ node todo.js list
-  $ node todo.js task <task_id>
-  $ node todo.js add <task_content>
-  $ node todo.js delete <task_id>
-  $ node todo.js complete <task_id>
-  $ node todo.js uncomplete <task_id>
-  $ node todo.js list:outstandingList asc|desc
-  $ node todo.js list:completed asc|desc
-  $ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
-  $ node todo.js filter:<tag_name>
-  `);
+  console.log(help);
 } else {
   const command = process.argv[2];
   // console.log(command);
@@ -51,7 +52,20 @@ if (process.argv.length < 3) {
     id = 0;
   }
 
+  let filtered = '';
+
+  for (let i = 7; i < command.length; i++) {
+    filtered += command[i];
+  }
+
+  // console.log(filtered);
+
   switch (command) {
+    case 'help':
+      console.log('>>> JS TODO <<<');
+      console.log(help);
+      break;
+
     case 'add':
       // console.log('add - jalan');
       id++;
@@ -180,11 +194,15 @@ if (process.argv.length < 3) {
       console.log('Daftar Pekerjaan');
       if (process.argv[3] === 'asc') {
         for (let i = 0; i < outstandingList.length; i++) {
-          console.log(`${outstandingList[i].id}. ${outstandingList[i].content}`);
+          console.log(
+            `${outstandingList[i].id}. ${outstandingList[i].content}`
+          );
         }
       } else if (process.argv[3] === 'desc') {
         for (let i = outstandingList.length - 1; i >= 0; i--) {
-          console.log(`${outstandingList[i].id}. ${outstandingList[i].content}`);
+          console.log(
+            `${outstandingList[i].id}. ${outstandingList[i].content}`
+          );
         }
       } else {
         console.log('Maaf, gunakan asc atau desc');
@@ -211,6 +229,49 @@ if (process.argv.length < 3) {
         }
       } else {
         console.log('Maaf, gunakan asc atau desc');
+      }
+      break;
+
+    case 'tag':
+      let tempDataWithTag = [];
+      let idTag = process.argv[3];
+      // console.log(idTag);
+      const tags = [];
+
+      for (let i = 4; i < process.argv.length; i++) {
+        // console.log(process.argv[i]);
+        tags.push(process.argv[i]);
+      }
+      // console.log(tags);
+
+      let dataWithTag = [];
+      for (let i = 0; i < readData.length; i++) {
+        if (readData[i].id == idTag) {
+          readData[i].tags = tags;
+          dataWithTag.push(readData[i]);
+        } else {
+          readData[i].tags = [];
+          dataWithTag.push(readData[i]);
+        }
+      }
+
+      // console.log(dataWithTag);
+      writeData = dataWithTag;
+      fs.writeFileSync('./data.json', JSON.stringify(writeData));
+      break;
+
+    case `filter:${filtered}`:
+      // console.log('jalan filternya');
+      for (let i = 0; i < readData.length; i++) {
+        // console.log(readData[i].tags.length);
+        if (readData[i].tags.length > 0) {
+          for (let j = 0; j < readData[i].tags.length; j++) {
+            if (readData[i].tags[j] === filtered) {
+              console.log('Daftar Pekerjaan');
+              console.log(`${readData[i].id} ${readData[i].content}`);
+            }
+          }
+        }
       }
       break;
 
