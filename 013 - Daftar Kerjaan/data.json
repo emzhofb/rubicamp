@@ -8,12 +8,25 @@
   },
   {
     "id": 2,
-    "content": "[X] saya mau makan",
+    "content": "[ ] saya mau minum",
     "tags": []
   },
   {
     "id": 3,
-    "content": "[X] saya mau minum",
+    "content": "[ ] saya mau masak",
+    "tags": [
+      "masak",
+      "sayur"
+    ]
+  },
+  {
+    "id": 4,
+    "content": "[ ] saya mau ngoding",
+    "tags": []
+  },
+  {
+    "id": 5,
+    "content": "[ ] saya mau tidur",
     "tags": []
   }
 ]

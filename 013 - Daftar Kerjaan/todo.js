@@ -251,11 +251,15 @@ if (process.argv.length < 3) {
 
       let dataWithTag = [];
       for (let i = 0; i < readData.length; i++) {
-        if (readData[i].id == idTag) {
-          readData[i].tags = tags;
-          dataWithTag.push(readData[i]);
+        if (readData[i].tags.length < 1) {
+          if (readData[i].id == idTag) {
+            readData[i].tags = tags;
+            dataWithTag.push(readData[i]);
+          } else {
+            readData[i].tags = [];
+            dataWithTag.push(readData[i]);
+          }
         } else {
-          readData[i].tags = [];
           dataWithTag.push(readData[i]);
         }
       }
@@ -267,12 +271,12 @@ if (process.argv.length < 3) {
 
     case `filter:${filtered}`:
       // console.log('jalan filternya');
+      console.log('Daftar Pekerjaan');
       for (let i = 0; i < readData.length; i++) {
         // console.log(readData[i].tags.length);
         if (readData[i].tags.length > 0) {
           for (let j = 0; j < readData[i].tags.length; j++) {
             if (readData[i].tags[j] === filtered) {
-              console.log('Daftar Pekerjaan');
               console.log(`${readData[i].id} ${readData[i].content}`);
             }
           }
