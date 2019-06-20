@@ -238,7 +238,6 @@ if (process.argv.length < 3) {
       break;
 
     case 'tag':
-      let tempDataWithTag = [];
       let idTag = process.argv[3];
       // console.log(idTag);
       const tags = [];
@@ -251,16 +250,16 @@ if (process.argv.length < 3) {
 
       let dataWithTag = [];
       for (let i = 0; i < readData.length; i++) {
-        if (readData[i].tags.length < 1) {
-          if (readData[i].id == idTag) {
-            readData[i].tags = tags;
-            dataWithTag.push(readData[i]);
-          } else {
+        if (readData[i].id == idTag) {
+          readData[i].tags = tags;
+          dataWithTag.push(readData[i]);
+        } else {
+          if (readData[i].tags.length < 1) {
             readData[i].tags = [];
             dataWithTag.push(readData[i]);
+          } else {
+            dataWithTag.push(readData[i]);
           }
-        } else {
-          dataWithTag.push(readData[i]);
         }
       }
 
