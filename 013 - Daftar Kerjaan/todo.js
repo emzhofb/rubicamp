@@ -69,7 +69,7 @@ if (process.argv.length < 3) {
     case 'add':
       // console.log('add - jalan');
       id++;
-      writeData.push({ id: id, content: `[ ] ${input}` });
+      writeData.push({ id: id, content: `[ ] ${input}`, tags: [] });
 
       fs.writeFileSync('./data.json', JSON.stringify(writeData));
       console.log(`"${input}" telah di tambahkan`);
@@ -249,17 +249,16 @@ if (process.argv.length < 3) {
       // console.log(tags);
 
       let dataWithTag = [];
+      let tempTags;
       for (let i = 0; i < readData.length; i++) {
         if (readData[i].id == idTag) {
-          readData[i].tags = tags;
+          // console.log(readData[i].tags);
+          tempTags = [...readData[i].tags, ...tags];
+          // console.log(tempTags);
+          readData[i].tags = [...tempTags];
           dataWithTag.push(readData[i]);
         } else {
-          if (readData[i].tags.length < 1) {
-            readData[i].tags = [];
-            dataWithTag.push(readData[i]);
-          } else {
-            dataWithTag.push(readData[i]);
-          }
+          dataWithTag.push(readData[i]);
         }
       }
 
