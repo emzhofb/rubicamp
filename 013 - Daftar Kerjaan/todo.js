@@ -9,7 +9,7 @@ $ node todo.js add <task_content>
 $ node todo.js delete <task_id>
 $ node todo.js complete <task_id>
 $ node todo.js uncomplete <task_id>
-$ node todo.js list:outstandingList asc|desc
+$ node todo.js list:outstanding asc|desc
 $ node todo.js list:completed asc|desc
 $ node todo.js tag <task_id> <tag_name_1> <tag_name_2> ... <tag_name_N>
 $ node todo.js filter:<tag_name>
@@ -66,6 +66,24 @@ if (process.argv.length < 3) {
       console.log(help);
       break;
 
+    case 'list':
+      // console.log(readData);
+      console.log('Daftar Pekerjaan');
+      for (let i = 0; i < readData.length; i++) {
+        console.log(`${readData[i].id}. ${readData[i].content}`);
+      }
+      break;
+
+    case 'task':
+      let choosenIndex = process.argv[3];
+
+      for (let i = 0; i < readData.length; i++) {
+        if (choosenIndex == readData[i].id) {
+          console.log(`${readData[i].id}. ${readData[i].content}`);
+        }
+      }
+      break;
+
     case 'add':
       // console.log('add - jalan');
       id++;
@@ -73,14 +91,6 @@ if (process.argv.length < 3) {
 
       fs.writeFileSync('./data.json', JSON.stringify(writeData));
       console.log(`"${input}" telah di tambahkan`);
-      break;
-
-    case 'list':
-      // console.log(readData);
-      console.log('Daftar Pekerjaan');
-      for (let i = 0; i < readData.length; i++) {
-        console.log(`${readData[i].id}. ${readData[i].content}`);
-      }
       break;
 
     case 'delete':

@@ -1,22 +1,28 @@
 [
   {
     "id": 1,
-    "content": "[ ] saya mau masak",
+    "content": "[X] saya mau masak",
     "tags": [
       "sayur",
-      "telur"
+      "telur",
+      "ayam"
     ]
   },
   {
     "id": 2,
-    "content": "[ ] saya mau ngoding",
+    "content": "[ ] saya mau tidur",
+    "tags": []
+  },
+  {
+    "id": 3,
+    "content": "[X] saya mau ngoding",
     "tags": [
       "javascript"
     ]
   },
   {
-    "id": 3,
-    "content": "[ ] saya mau tidur",
+    "id": 4,
+    "content": "[ ] saya mau makan",
     "tags": []
   }
 ]
