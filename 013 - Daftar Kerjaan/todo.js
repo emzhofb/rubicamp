@@ -85,9 +85,10 @@ if (process.argv.length < 3) {
 
     case 'delete':
       // console.log(typeof process.argv[3]);
+      let deletedIndex = process.argv[3];
       writeData = [];
       for (let i = 0; i < readData.length; i++) {
-        if (readData[i].id != process.argv[3]) {
+        if (readData[i].id != deletedIndex) {
           // console.log(readData[i]);
           writeData.push(readData[i]);
         } else {
@@ -105,8 +106,12 @@ if (process.argv.length < 3) {
       let tempData = [];
       for (let i = 0; i < writeData.length; i++) {
         // console.log(writeData[i].id -= 1);
-        writeData[i].id -= 1;
-        tempData.push(writeData[i]);
+        if (writeData[i].id > Number(process.argv[3])) {
+          writeData[i].id -= 1;
+          tempData.push(writeData[i]);
+        } else {
+          tempData.push(writeData[i]);
+        }
       }
       // console.log(tempData);
       writeData = tempData;
