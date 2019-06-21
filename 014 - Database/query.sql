@@ -56,11 +56,11 @@ INSERT INTO dosens ( nama ) VALUES ( "Aika Sonoda" );
 CREATE TABLE matakuliahs ( id INTEGER PRIMARY KEY, nama TEXT NOT NULL, sks TEXT NOT NULL );
 
 -- Insert value to matakuliahs
+INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa jepang", "Hiragana" );
 INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa jepang", "Katakana" );
 INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa jepang", "Kanji" );
 INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa indonesia", "Tata Bahasa" );
 INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa indonesia", "Peribahasa" );
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( "Bahasa jepang", "Hiragana" );
 
 -- How to see value in the tables
 SELECT * FROM mahasiswas;
