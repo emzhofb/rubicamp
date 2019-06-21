@@ -67,3 +67,6 @@ SELECT * FROM mahasiswas;
 SELECT * FROM dosens;
 SELECT * FROM jurusans;
 SELECT * FROM matakuliahs;
+
+-- How to delete table
+DROP TABLE mahasiswas;
