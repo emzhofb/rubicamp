@@ -70,3 +70,6 @@ SELECT * FROM matakuliahs;
 
 -- How to delete table
 DROP TABLE mahasiswas;
+DROP TABLE dosens;
+DROP TABLE jurusans;
+DROP TABLE matakuliahs;
