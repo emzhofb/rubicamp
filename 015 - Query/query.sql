@@ -16,3 +16,33 @@ mahasiswas.jurusan = jurusans.jurusanId;
 SELECT * FROM mahasiswas WHERE umur < 20;
 
 -- 3
+SELECT 
+  nama, 
+  nilai 
+FROM 
+  mahasiswas, 
+  reports 
+WHERE 
+  mahasiswas.nim = reports.nim 
+AND 
+  reports.nilai <= "B";
+
+-- 4
+
+-- 5
+SELECT 
+  mahasiswas.nama, 
+  matakuliahs.sks 
+FROM 
+  mahasiswas, 
+  reports, 
+  matakuliahs 
+WHERE 
+  mahasiswas.nim = reports.nim 
+AND 
+  reports.matakuliah = matakuliahs.mkId 
+AND 
+  matakuliahs.sks = "Data Mining";
+
+-- 6
+
