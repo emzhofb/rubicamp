@@ -3,8 +3,7 @@ sqlite3 university.db
 
 -- Create table mahasiswas
 CREATE TABLE mahasiswas (
-  id INTEGER PRIMARY KEY, 
-  nim INTEGER NOT NULL UNIQUE, 
+  nim INTEGER PRIMARY KEY, 
   nama TEXT NOT NULL, 
   alamat TEXT NOT NULL, 
   jurusan INTEGER NOT NULL, 
@@ -38,7 +37,7 @@ INSERT INTO mahasiswas (
 
 -- Create table jurusans
 CREATE TABLE jurusans (
-  id INTEGER PRIMARY KEY, 
+  jurusanId INTEGER PRIMARY KEY, 
   namajurusan TEXT NOT NULL 
 );
 
@@ -47,7 +46,7 @@ INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Jepang" );
 INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Indonesia" );
 
 -- Create table dosens
-CREATE TABLE dosens ( id INTEGER PRIMARY KEY, nama TEXT NOT NULL );
+CREATE TABLE dosens ( nip INTEGER PRIMARY KEY, nama TEXT NOT NULL );
 
 -- Insert value to dosens
 INSERT INTO dosens ( nama ) VALUES ( "Genta Perdana" );
@@ -55,7 +54,7 @@ INSERT INTO dosens ( nama ) VALUES ( "Aika Sonoda" );
 
 -- Create table matakuliahs
 CREATE TABLE matakuliahs ( 
-  id INTEGER PRIMARY KEY, 
+  mkId INTEGER PRIMARY KEY, 
   nama INTEGER NOT NULL, 
   sks TEXT NOT NULL, 
       FOREIGN KEY (nama) REFERENCES jurusans(id),
@@ -71,19 +70,19 @@ INSERT INTO matakuliahs ( nama, sks ) VALUES ( 2, "Peribahasa" );
 -- Create table reports
 CREATE TABLE reports (
   id INTEGER PRIMARY KEY, 
-  namamahasiswa INTEGER NOT NULL, 
-  jurusan INTEGER NOT NULL, 
+  nim INTEGER NOT NULL, 
+  dosen INTEGER NOT NULL, 
   matakuliah INTEGER NOT NULL, 
   nilai TEXT NOT NULL, 
-      FOREIGN KEY (namamahasiswa) REFERENCES mahasiswas(id),
-      FOREIGN KEY (jurusan) REFERENCES jurusans(id)
-      FOREIGN KEY (matakuliah) REFERENCES matakuliahs(id),
+      FOREIGN KEY (namamahasiswa) REFERENCES mahasiswas(nim),
+      FOREIGN KEY (dosen) REFERENCES dosens(nip)
+      FOREIGN KEY (matakuliah) REFERENCES matakuliahs(mkId),
 );
 
 -- Insert values to reports
 INSERT INTO reports ( 
-  namamahasiswa, 
-  jurusan, 
+  nim, 
+  dosen, 
   matakuliah, 
   nilai 
 ) VALUES ( 
@@ -94,8 +93,8 @@ INSERT INTO reports (
 );
 
 INSERT INTO reports ( 
-  namamahasiswa, 
-  jurusan, 
+  nim, 
+  dosen, 
   matakuliah, 
   nilai 
 ) VALUES ( 
@@ -106,8 +105,8 @@ INSERT INTO reports (
 );
 
 INSERT INTO reports ( 
-  namamahasiswa, 
-  jurusan, 
+  nim, 
+  dosen, 
   matakuliah, 
   nilai 
 ) VALUES ( 
@@ -118,8 +117,8 @@ INSERT INTO reports (
 );
 
 INSERT INTO reports ( 
-  namamahasiswa, 
-  jurusan, 
+  nim, 
+  dosen, 
   matakuliah, 
   nilai 
 ) VALUES ( 
@@ -130,8 +129,8 @@ INSERT INTO reports (
 );
 
 INSERT INTO reports ( 
-  namamahasiswa, 
-  jurusan, 
+  nim, 
+  dosen, 
   matakuliah, 
   nilai 
 ) VALUES ( 
