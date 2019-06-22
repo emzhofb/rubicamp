@@ -51,11 +51,11 @@ INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Jepang" );
 INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Indonesia" );
 
 -- Create table dosens
-CREATE TABLE dosens ( nip INTEGER PRIMARY KEY, nama TEXT NOT NULL );
+CREATE TABLE dosens ( nip INTEGER PRIMARY KEY, namadosen TEXT NOT NULL );
 
 -- Insert value to dosens
-INSERT INTO dosens ( nama ) VALUES ( "Genta Perdana" );
-INSERT INTO dosens ( nama ) VALUES ( "Aika Sonoda" );
+INSERT INTO dosens ( namadosen ) VALUES ( "Genta Perdana" );
+INSERT INTO dosens ( namadosen ) VALUES ( "Aika Sonoda" );
 
 -- Create table matakuliahs
 CREATE TABLE matakuliahs ( 
