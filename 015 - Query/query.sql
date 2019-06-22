@@ -46,3 +46,14 @@ AND
 
 -- 6
 
+-- 7
+SELECT 
+  nama, 
+  umur 
+FROM 
+  mahasiswas 
+ORDER BY 
+  umur 
+ASC;
+
+-- 8
