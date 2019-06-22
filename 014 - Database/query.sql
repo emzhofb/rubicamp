@@ -91,10 +91,10 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  5555, 
-  3, 
-  13, 
-  "C"
+  1111, 
+  1, 
+  1, 
+  "A"
 );
 
 INSERT INTO reports ( 
