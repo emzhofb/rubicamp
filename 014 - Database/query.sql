@@ -6,8 +6,9 @@ CREATE TABLE mahasiswas (
   nim INTEGER PRIMARY KEY, 
   nama TEXT NOT NULL, 
   alamat TEXT NOT NULL, 
+  umur TEXT NOT NULL,
   jurusan INTEGER NOT NULL, 
-      FOREIGN KEY (jurusan) REFERENCES jurusans(id),
+      FOREIGN KEY (jurusan) REFERENCES jurusans(id)
 );
 
 -- Insert values to mahasiswas
@@ -15,11 +16,13 @@ INSERT INTO mahasiswas (
   nim, 
   nama, 
   alamat, 
+  umur,
   jurusan 
 ) VALUES ( 
   1111, 
   "Ikhda Muhammad Wildani", 
   "Jepara", 
+  20,
   1
 );
 
@@ -27,11 +30,13 @@ INSERT INTO mahasiswas (
   nim, 
   nama, 
   alamat, 
+  umur,
   jurusan 
 ) VALUES ( 
   2222, 
   "John Doe", 
   "Los Angeles", 
+  23,
   2 
 );
 
