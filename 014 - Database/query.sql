@@ -75,11 +75,11 @@ INSERT INTO matakuliahs ( nama, sks ) VALUES ( 2, "Peribahasa" );
 -- Create table reports
 CREATE TABLE reports (
   id INTEGER PRIMARY KEY, 
-  mahasiswa INTEGER NOT NULL, 
+  nim INTEGER NOT NULL, 
   dosen INTEGER NOT NULL, 
   matakuliah INTEGER NOT NULL, 
   nilai TEXT NOT NULL, 
-      FOREIGN KEY (mahasiswa) REFERENCES mahasiswas(nim),
+      FOREIGN KEY (nim) REFERENCES mahasiswas(nim),
       FOREIGN KEY (dosen) REFERENCES dosens(nip)
       FOREIGN KEY (matakuliah) REFERENCES matakuliahs(mkId)
 );
