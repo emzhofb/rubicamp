@@ -6,8 +6,8 @@ CREATE TABLE mahasiswas (
   nim TEXT PRIMARY KEY, 
   nama TEXT NOT NULL, 
   alamat TEXT NOT NULL, 
-  umur TEXT NOT NULL,
-  jurusan INTEGER NOT NULL, 
+  umur INTEGER NOT NULL,
+  jurusan TEXT NOT NULL, 
       FOREIGN KEY (jurusan) REFERENCES jurusans(id)
 );
 
@@ -19,7 +19,7 @@ INSERT INTO mahasiswas (
   umur,
   jurusan 
 ) VALUES ( 
-  1111, 
+  "0001", 
   "Ikhda Muhammad Wildani", 
   "Jepara", 
   20,
@@ -33,11 +33,53 @@ INSERT INTO mahasiswas (
   umur,
   jurusan 
 ) VALUES ( 
-  2222, 
+  "0010", 
   "John Doe", 
   "Los Angeles", 
   23,
   2 
+);
+
+INSERT INTO mahasiswas ( 
+  nim, 
+  nama, 
+  alamat, 
+  umur,
+  jurusan 
+) VALUES ( 
+  "0011", 
+  "Kim So-hyun", 
+  "Busan", 
+  20,
+  3 
+);
+
+INSERT INTO mahasiswas ( 
+  nim, 
+  nama, 
+  alamat, 
+  umur,
+  jurusan 
+) VALUES ( 
+  "0100", 
+  "Nanako Tojo", 
+  "Kyoto", 
+  18,
+  2 
+);
+
+INSERT INTO mahasiswas ( 
+  nim, 
+  nama, 
+  alamat, 
+  umur,
+  jurusan 
+) VALUES ( 
+  "0101", 
+  "Amari Kyoko", 
+  "Tokyo", 
+  19,
+  3 
 );
 
 -- Create table jurusans
@@ -48,29 +90,31 @@ CREATE TABLE jurusans (
 
 -- Insert value to jurusans
 INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Jepang" );
+INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Korea" );
 INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Indonesia" );
 
 -- Create table dosens
 CREATE TABLE dosens ( nip TEXT PRIMARY KEY, namadosen TEXT NOT NULL );
 
 -- Insert value to dosens
-INSERT INTO dosens ( namadosen ) VALUES ( "Genta Perdana" );
-INSERT INTO dosens ( namadosen ) VALUES ( "Aika Sonoda" );
+INSERT INTO dosens ( namadosen ) VALUES ( "TI1", "Aika Sonoda" );
+INSERT INTO dosens ( namadosen ) VALUES ( "TI2", "Park Ji Soo" );
+INSERT INTO dosens ( namadosen ) VALUES ( "TI3", "Genta Perdana" );
 
 -- Create table matakuliahs
 CREATE TABLE matakuliahs ( 
   mkId INTEGER PRIMARY KEY, 
-  jurusan INTEGER NOT NULL, 
-  sks TEXT NOT NULL, 
-      FOREIGN KEY (jurusan) REFERENCES jurusans(id)
+  namamk TEXT NOT NULL, 
+  sks INTEGER NOT NULL
 );
 
 -- Insert value to matakuliahs
-INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Hiragana" );
-INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Katakana" );
-INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Kanji" );
-INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 2, "Tata Bahasa" );
-INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 2, "Peribahasa" );
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Hiragana",  4);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Katakana",  4);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Kanji",  4);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Hangeul",  4);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Tata Bahasa",  3);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Peribahasa",  2);
 
 -- Create table reports
 CREATE TABLE reports (
@@ -91,8 +135,8 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  1111, 
-  1, 
+  "0001", 
+  "TI1", 
   1, 
   "A"
 );
@@ -103,8 +147,8 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  1111, 
-  1, 
+  "0001", 
+  "TI1", 
   2, 
   "A"
 );
@@ -115,8 +159,8 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  1111, 
-  1, 
+  "0001", 
+  "TI1", 
   3, 
   "B"
 );
@@ -127,9 +171,21 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  2222, 
-  2, 
+  "0010", 
+  "TI2", 
   4, 
+  "D"
+);
+
+INSERT INTO reports ( 
+  nim, 
+  dosen, 
+  matakuliah, 
+  nilai 
+) VALUES ( 
+  "0011", 
+  "TI3", 
+  5, 
   "B"
 );
 
@@ -139,10 +195,46 @@ INSERT INTO reports (
   matakuliah, 
   nilai 
 ) VALUES ( 
-  2222, 
-  2, 
+  "0011", 
+  "TI3", 
+  6, 
+  "B"
+);
+
+INSERT INTO reports ( 
+  nim, 
+  dosen, 
+  matakuliah, 
+  nilai 
+) VALUES ( 
+  "0100", 
+  "TI2", 
+  4, 
+  "C"
+);
+
+INSERT INTO reports ( 
+  nim, 
+  dosen, 
+  matakuliah, 
+  nilai 
+) VALUES ( 
+  "0101", 
+  "TI3", 
   5, 
   "C"
+);
+
+INSERT INTO reports ( 
+  nim, 
+  dosen, 
+  matakuliah, 
+  nilai 
+) VALUES ( 
+  "0101", 
+  "TI3", 
+  6, 
+  "D"
 );
 
 -- How to see value in the tables
@@ -157,3 +249,4 @@ DROP TABLE mahasiswas;
 DROP TABLE dosens;
 DROP TABLE jurusans;
 DROP TABLE matakuliahs;
+DROP TABLE reports;
