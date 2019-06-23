@@ -134,9 +134,9 @@ AND
 -- fail
 
 -- 6
-SELECT 
+SELECT DISTINCT
   dosens.namadosen, 
-  COUNT(mahasiswas.nama)
+  count(mahasiswas.nama)
 FROM 
   dosens 
 INNER JOIN
