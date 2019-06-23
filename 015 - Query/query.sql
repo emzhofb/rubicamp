@@ -162,3 +162,23 @@ ON
   matakuliahs.nama = jurusans.jurusanId 
 GROUP BY 
   jurusans.namajurusan;
+
+-- 6
+SELECT 
+  dosens.namadosen, 
+  COUNT(mahasiswas.nama),
+  COUNT(matakuliahs.sks)
+FROM 
+  dosens, 
+  jurusans, 
+  reports,
+  mahasiswas,  
+  matakuliahs
+WHERE
+  dosens.nip = reports.dosen 
+AND
+  reports.nim = mahasiswas.nim 
+AND
+  matakuliahs.nama = jurusans.jurusanId 
+GROUP BY 
+  namadosen;
