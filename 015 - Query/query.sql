@@ -30,7 +30,7 @@ AND
 -- 4
 SELECT 
   mahasiswas.nama, 
-  COUNT(matakuliahs.sks) 
+  SUM(matakuliahs.sks) 
 FROM 
   mahasiswas, 
   reports, 
@@ -42,12 +42,12 @@ AND
 GROUP BY 
   mahasiswas.nama 
 HAVING 
-  COUNT(matakuliahs.sks) > 10;
+  SUM(matakuliahs.sks) > 10;
 
 -- 5
 SELECT 
   mahasiswas.nama, 
-  matakuliahs.sks 
+  matakuliahs.namamk 
 FROM 
   mahasiswas, 
   reports, 
@@ -57,9 +57,24 @@ WHERE
 AND 
   reports.matakuliah = matakuliahs.mkId 
 AND 
-  matakuliahs.sks = "Data Mining";
+  matakuliahs.namamk = "Data Mining";
 
 -- 6
+SELECT
+  dosens.namadosen, 
+  count(mahasiswas.nama)
+FROM 
+  dosens 
+INNER JOIN
+  reports
+ON
+  dosens.nip = reports.dosen 
+INNER JOIN
+  mahasiswas
+ON
+  reports.nim = mahasiswas.nim 
+GROUP BY 
+  namadosen;
 
 -- 7
 SELECT 
@@ -77,11 +92,13 @@ ASC;
 SELECT 
   mahasiswas.nama, 
   jurusans.namajurusan, 
+  matakuliahs.namamk,
   reports.nilai, 
   dosens.namadosen
 FROM 
   mahasiswas, 
   reports ,
+  matakuliahs,
   jurusans,
   dosens
 WHERE 
@@ -90,6 +107,8 @@ AND
   mahasiswas.nim = reports.nim 
 AND
   reports.dosen = dosens.nip
+AND
+  reports.matakuliah = matakuliahs.mkId
 AND 
   reports.nilai > "C";
 
@@ -97,6 +116,7 @@ AND
 SELECT 
   mahasiswas.nama, 
   jurusans.namajurusan, 
+  matakuliahs.namamk,
   reports.nilai, 
   dosens.namadosen
 FROM 
@@ -113,72 +133,9 @@ INNER JOIN
   dosens
 ON
   reports.dosen = dosens.nip
+INNER JOIN
+  matakuliahs
+ON
+  reports.matakuliah = matakuliahs.mkId
 AND 
   reports.nilai > "C";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- fail
-
--- 6
-SELECT DISTINCT
-  dosens.namadosen, 
-  count(mahasiswas.nama)
-FROM 
-  dosens 
-INNER JOIN
-  reports
-ON
-  dosens.nip = reports.dosen 
-INNER JOIN
-  mahasiswas
-ON
-  reports.nim = mahasiswas.nim 
-GROUP BY 
-  namadosen;
-
--- 6
-SELECT 
-  jurusans.namajurusan, 
-  COUNT(matakuliahs.sks)
-FROM 
-  jurusans 
-INNER JOIN
-  matakuliahs
-ON
-  matakuliahs.nama = jurusans.jurusanId 
-GROUP BY 
-  jurusans.namajurusan;
-
--- 6
-SELECT 
-  dosens.namadosen, 
-  COUNT(mahasiswas.nama),
-  COUNT(matakuliahs.sks)
-FROM 
-  dosens, 
-  jurusans, 
-  reports,
-  mahasiswas,  
-  matakuliahs
-WHERE
-  dosens.nip = reports.dosen 
-AND
-  reports.nim = mahasiswas.nim 
-AND
-  matakuliahs.nama = jurusans.jurusanId 
-GROUP BY 
-  namadosen;
