@@ -3,7 +3,7 @@ sqlite3 university.db
 
 -- Create table mahasiswas
 CREATE TABLE mahasiswas (
-  nim INTEGER PRIMARY KEY, 
+  nim TEXT PRIMARY KEY, 
   nama TEXT NOT NULL, 
   alamat TEXT NOT NULL, 
   umur TEXT NOT NULL,
@@ -60,17 +60,17 @@ INSERT INTO dosens ( namadosen ) VALUES ( "Aika Sonoda" );
 -- Create table matakuliahs
 CREATE TABLE matakuliahs ( 
   mkId INTEGER PRIMARY KEY, 
-  nama INTEGER NOT NULL, 
+  jurusan INTEGER NOT NULL, 
   sks TEXT NOT NULL, 
-      FOREIGN KEY (nama) REFERENCES jurusans(id)
+      FOREIGN KEY (jurusan) REFERENCES jurusans(id)
 );
 
 -- Insert value to matakuliahs
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( 1, "Hiragana" );
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( 1, "Katakana" );
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( 1, "Kanji" );
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( 2, "Tata Bahasa" );
-INSERT INTO matakuliahs ( nama, sks ) VALUES ( 2, "Peribahasa" );
+INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Hiragana" );
+INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Katakana" );
+INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 1, "Kanji" );
+INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 2, "Tata Bahasa" );
+INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 2, "Peribahasa" );
 
 -- Create table reports
 CREATE TABLE reports (
