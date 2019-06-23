@@ -51,7 +51,7 @@ INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Jepang" );
 INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Indonesia" );
 
 -- Create table dosens
-CREATE TABLE dosens ( nip INTEGER PRIMARY KEY, namadosen TEXT NOT NULL );
+CREATE TABLE dosens ( nip TEXT PRIMARY KEY, namadosen TEXT NOT NULL );
 
 -- Insert value to dosens
 INSERT INTO dosens ( namadosen ) VALUES ( "Genta Perdana" );
@@ -75,8 +75,8 @@ INSERT INTO matakuliahs ( jurusan, sks ) VALUES ( 2, "Peribahasa" );
 -- Create table reports
 CREATE TABLE reports (
   id INTEGER PRIMARY KEY, 
-  nim INTEGER NOT NULL, 
-  dosen INTEGER NOT NULL, 
+  nim TEXT NOT NULL, 
+  dosen TEXT NOT NULL, 
   matakuliah INTEGER NOT NULL, 
   nilai TEXT NOT NULL, 
       FOREIGN KEY (nim) REFERENCES mahasiswas(nim),
