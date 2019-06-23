@@ -97,9 +97,9 @@ INSERT INTO jurusans ( namajurusan ) VALUES ( "Bahasa Indonesia" );
 CREATE TABLE dosens ( nip TEXT PRIMARY KEY, namadosen TEXT NOT NULL );
 
 -- Insert value to dosens
-INSERT INTO dosens ( namadosen ) VALUES ( "TI1", "Aika Sonoda" );
-INSERT INTO dosens ( namadosen ) VALUES ( "TI2", "Park Ji Soo" );
-INSERT INTO dosens ( namadosen ) VALUES ( "TI3", "Genta Perdana" );
+INSERT INTO dosens ( nip, namadosen ) VALUES ( "TI1", "Aika Sonoda" );
+INSERT INTO dosens ( nip, namadosen ) VALUES ( "TI2", "Park Ji Soo" );
+INSERT INTO dosens ( nip, namadosen ) VALUES ( "TI3", "Genta Perdana" );
 
 -- Create table matakuliahs
 CREATE TABLE matakuliahs ( 
@@ -115,6 +115,7 @@ INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Kanji",  4);
 INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Hangeul",  4);
 INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Tata Bahasa",  3);
 INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Peribahasa",  2);
+INSERT INTO matakuliahs ( namamk, sks ) VALUES ( "Data Mining",  2);
 
 -- Create table reports
 CREATE TABLE reports (
@@ -175,6 +176,18 @@ INSERT INTO reports (
   "TI2", 
   4, 
   "D"
+);
+
+INSERT INTO reports ( 
+  nim, 
+  dosen, 
+  matakuliah, 
+  nilai 
+) VALUES ( 
+  "0010", 
+  "TI2", 
+  7, 
+  "B"
 );
 
 INSERT INTO reports ( 
