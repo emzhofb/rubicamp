@@ -1,8 +1,9 @@
 class CarFactory {
-  constructor(car, sold) {
+  constructor(car, sold, quarantee) {
     // super(car, sold);
     this.car = car;
-    this.totalCar = Math.random() * sold;
+    this.totalCar = sold;
+    this.quarantee = quarantee;
   }
 
   setCar(newCar) {
@@ -10,7 +11,11 @@ class CarFactory {
   }
 
   setTotalCar(newSold) {
-    this.totalCar = newSold;
+    this.totalCar = Math.floor(Math.random() * newSold);
+  }
+
+  setQuarantee(newQuarantee) {
+    this.quarantee = Math.floor(Math.random() * newQuarantee);
   }
 
   getCar() {
@@ -21,10 +26,14 @@ class CarFactory {
     return this.totalCar;
   }
 
+  getQuarantee() {
+    return this.quarantee;
+  }
+
   resultArea() {
-    const resultCarFactory = `This car ${this.car} has been sold ${
+    const resultCarFactory = `This car from ${this.car} has been sold ${
       this.totalCar
-    } times per months`;
+    } times per months and has ${this.quarantee} days quarantee`;
     return resultCarFactory;
   }
 }
@@ -195,7 +204,7 @@ class Honda extends Car {
   }
 
   resultArea() {
-    const theCar = `Honda with ${this.tyre} tyres, ${this.seat} seats, ${this.door} doors, ${
+    const theCar = `A car with ${this.tyre} tyres, ${this.seat} seats, ${this.door} doors, ${
       this.body
     } type of body, and with ${this.engine} engine`;
     return theCar;
@@ -253,7 +262,7 @@ class Toyota extends Car {
   }
 
   resultArea() {
-    const theCar = `Toyota with ${this.tyre}, ${this.seat}, ${this.door}, ${
+    const theCar = `A car with ${this.tyre}, ${this.seat}, ${this.door}, ${
       this.body
     }, and ${this.engine}`;
     return theCar;
@@ -311,12 +320,15 @@ class Suzuki extends Car {
   }
 
   resultArea() {
-    const theCar = `Suzuki with ${this.tyre}, ${this.seat}, ${this.door}, ${
+    const theCar = `A car with ${this.tyre}, ${this.seat}, ${this.door}, ${
       this.body
     }, and ${this.engine}`;
     return theCar;
   }
 }
+
+const honda = new Car();
+honda.setMerk("Honda");
 
 const mobilio = new Honda();
 
@@ -336,4 +348,10 @@ mobilio.setDoor(doorOfMobilio.doorType);
 mobilio.setBody(bodyOfMobilio.bodyType);
 mobilio.setEngine(engineOfMobilio.engineType);
 
-console.log(`${mobilio.resultArea()} called Mobilio.`);
+const newCar = new CarFactory();
+newCar.setCar(honda.merk);
+newCar.setTotalCar(5000);
+newCar.setQuarantee(321);
+
+console.log(`${mobilio.resultArea()} called Mobilio, from ${honda.merk}.`);
+console.log(newCar.resultArea());
