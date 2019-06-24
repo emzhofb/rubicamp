@@ -346,5 +346,5 @@ newCar.setCar(honda.merk);
 newCar.setTotalCar(5000);
 newCar.setQuarantee(321);
 
-console.log(`${mobilio.resultArea()} called Mobilio, from ${honda.merk}.`);
-console.log(newCar.resultArea());
+console.log(`${mobilio.resultArea()} called Mobilio, from ${honda.merk}.
+${newCar.resultArea()}`);
