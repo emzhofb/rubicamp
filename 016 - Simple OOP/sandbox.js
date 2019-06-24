@@ -333,7 +333,8 @@ const doorOfMobilio = new Door();
 doorOfMobilio.setDoorType("Sliding");
 const bodyOfMobilio = new Body();
 bodyOfMobilio.setBodyType("SUV");
-const engineOfMobilio = new Engine("Piston");
+const engineOfMobilio = new Engine();
+engineOfMobilio.setEngineType("Piston");
 
 mobilio.setTyre(tyreOfMobilio.totalTyre);
 mobilio.setSeat(seatOfMobilio.totalSeat);
