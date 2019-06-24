@@ -1,6 +1,5 @@
 class CarFactory {
   constructor(car, sold, quarantee) {
-    // super(car, sold);
     this.car = car;
     this.totalCar = Math.floor(Math.random() * sold);
     this.quarantee = Math.floor(Math.random() * quarantee);
@@ -40,7 +39,6 @@ class CarFactory {
 
 class Car {
   constructor(merk) {
-    // super(merk);
     this.merk = merk;
   }
 
@@ -60,7 +58,6 @@ class Car {
 
 class Tyre {
   constructor(totalTyre) {
-    // super(totalTyre);
     this.totalTyre = totalTyre;
   }
 
@@ -80,7 +77,6 @@ class Tyre {
 
 class Seat {
   constructor(totalSeat) {
-    // super(totalSeat);
     this.totalSeat = totalSeat;
   }
 
@@ -100,7 +96,6 @@ class Seat {
 
 class Door {
   constructor(doorType) {
-    // super(doorType);
     this.doorType = doorType;
   }
 
@@ -120,7 +115,6 @@ class Door {
 
 class Body {
   constructor(bodyType) {
-    // super(bodyType);
     this.bodyType = bodyType;
   }
 
@@ -140,7 +134,6 @@ class Body {
 
 class Engine {
   constructor(engineType) {
-    // super(engineType);
     this.engineType = engineType;
   }
 
