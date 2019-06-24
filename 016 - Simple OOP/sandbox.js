@@ -2,8 +2,8 @@ class CarFactory {
   constructor(car, sold, quarantee) {
     // super(car, sold);
     this.car = car;
-    this.totalCar = sold;
-    this.quarantee = quarantee;
+    this.totalCar = Math.floor(Math.random() * sold);
+    this.quarantee = Math.floor(Math.random() * quarantee);
   }
 
   setCar(newCar) {
