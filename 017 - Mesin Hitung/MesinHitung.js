@@ -41,7 +41,6 @@ class MesinHitung {
 
   result() {
     console.log(this.x);
-    return this;
   }
 }
 
