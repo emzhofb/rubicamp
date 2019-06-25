@@ -1,7 +1,7 @@
 import MesinHitung from './MesinHitung';
 
 const mh = new MesinHitung();
-const Pi = 3.14;
+const Pi = 22/7;
 
 mh.add(10)
   .substract(5)
