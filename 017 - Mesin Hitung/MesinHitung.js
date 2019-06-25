@@ -33,7 +33,7 @@ class MesinHitung {
     this.x **= 2;
     return this;
   }
-
+  
   exponent(num) {
     this.x **= num;
     return this;
@@ -45,3 +45,5 @@ class MesinHitung {
 }
 
 export default MesinHitung;
+
+// for chainingable, we must to return this, not this.x.
