@@ -18,9 +18,8 @@ class Form extends React.Component {
   componentDidMount() {
     const socket = openSocket('http://localhost:4000/');
     socket.on('receive-message', msg => {
-      this.state.chat.push(msg);
       this.setState({
-        chat: this.state.chat
+        chat: [...this.state.chat, msg]
       });
     });
 
@@ -51,10 +50,6 @@ class Form extends React.Component {
       .post('http://localhost:4000/', data)
       .then(() => {
         this.setState({
-          chat: [
-            ...this.state.chat,
-            { name: this.state.name, message: this.state.message }
-          ],
           name: '',
           message: ''
         });
